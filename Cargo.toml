@@ -15,3 +15,9 @@ serde = { version = "1.0.152", features = ["derive"] }
 tokio = { version = "1.25.0", features = ["full"] }
 uuid = { version = "1.2.2", features = ["v4"] }
 
+[profile.release]
+strip = true        # Automatically strip symbols from the binary
+opt-level = "z"     # Optimize for size
+lto = true          # Enable LTO
+codegen-units = 1   # Use a stringle codegen for size optimization
+panic = "abort"     # Remove traceback information

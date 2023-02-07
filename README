@@ -1,4 +1,36 @@
+## Instalar cargo watch, detecxão de alteraçoes no codigo
+  cargo install cargo-watch
+
+  cargo watch -x run
+
+## biblioteca
  cargo add tokio --features=full
  cargo add axum
 
+## formata o codigo
+ cargo fmt
 
+# gerar o binario
+rustc main.rs
+
+## tamanho do binario
+cargo build --release
+du -h ./target/debug/person_api
+4.1M  ./target/debug/person_api
+
+## para otimizar o tamanho do codigo (perde em perfomase)
+cargo.toml
+
+[profile.release]
+strip = true        # Automatically strip symbols from the binary
+opt-level = "z"     # Optimize for size
+lto = true          # Enable LTO
+codegen-units = 1   # Use a stringle codegen for size optimization
+panic = "abort"     # Remove traceback information
+# gerar o build em modo release
+cargo build --release
+du -h ./target/debug/person_api
+M  ./target/debug/person_api
+
+
+## irust
